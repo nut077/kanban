@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+spring:
+  datasource:
+    #url: jdbc:mysql://lottodb:3306/kanbandb?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/kanbandb?serverTimezone=Asia/Bangkok
+    username: freedom
+    password: ENC(RIm8/nK1MDApLWtVarNeFA==)
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop #create-drop สร้าง schema ต่างๆที่เราได้ทำใน entity และจำ destroy schema เมื่อทำการปิด project #สร้าง schema แต่ไม่ destroy
+    properties:
+      hibernate.format_sql: false #ให้ format อยู่ในรูปที่อ่านง่ายขึ้น default = false
+      hibernate.generate_statistics: false #วิเคราะได้ว่า query นี้ทำการเปิด ปิด connect เท่าไร จำนวนเวลา
+      hibernate.query.immutable_entity_update_query_handling_mode: exception  #(warning | exception) default is warning
+
+    #for handle 404 exception
+  mvc:
+    throw-exception-if-no-handler-found: true
+    log-resolved-exception: false
+
+#base64
+#jwt:
+  #secret: ENC(P1XJW9uSBiRG7622F6hc8g==)
+
+custom:
+  formatdatetime:
+    date: dd-MM-yyyy
+    dateTime: dd-MM-yyyy HH:mm:ss
