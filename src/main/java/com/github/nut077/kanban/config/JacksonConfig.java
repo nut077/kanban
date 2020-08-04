@@ -20,6 +20,7 @@ import java.time.format.DateTimeFormatter;
 @Configuration(proxyBeanMethods = false)
 public class JacksonConfig {
 
+  // test
   private final DateTimeFormatProperty props;
 
   @Bean
